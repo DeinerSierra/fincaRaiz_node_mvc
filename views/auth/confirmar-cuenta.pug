@@ -1,0 +1,9 @@
+extends ../layout/index
+block contenido
+    div.py-10
+        h1.text-4xl.my-10-font-extrabold.text-center FincaRaiz
+        h2.text-center.font-bold.text-2xl= pagina
+    div(class="bg-gray-800 shadow-lg py-8 px-4 rounded-lg max-w-md mx-auto")
+        p(class= error ? 'bg-red-500':'bg-green-500').py-2.px-5.rounded-lg.w-full.font-bold.text-center= mensaje
+        if !error
+            a(href="/auth/login" class="text-center font-bold text-sm text-slate-400 uppercase mt-10 block") Inicia Sesion

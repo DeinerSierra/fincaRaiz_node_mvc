@@ -1,0 +1,72 @@
+extends ../layout/app
+block styles
+    link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
+block contenido 
+    div(class="py-5")
+        h1(class="text-4xl mt-10 font-extrabold text-center")= propiedad.titulo
+        div 
+            a(href="#" class="font-bold text-gray-300 text-sm") Categoria: 
+                span(class="font-normal")= propiedad.categoria.nombre
+        div(class="mt-5 md:flex md:gap-4 md:items-start")
+            div(class="md:w-2/3 bg-gray-800 shadow-md rounded-lg ")
+                img(src=`/uploads/${propiedad.imagen}`, alt="imagen propiedad")
+                div(class="px-5 py-10 space-y-5")
+                    h2(class="text-2xl leading-6 font-bold text-center") Información de la Propiedad
+                    p.text-center= propiedad.descripcion
+                    
+
+                    div(class="grid grid-cols-1 md:grid-cols-2")
+                        div(class="my-5 text-sm md:md:w-2/3 flex flex-col md:items-center")
+                            p(class="text-white py-2 px-2 rounded-lg flex gap-1 items-center text-2xl") Habitaciones <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                    </svg>
+                            p.text-sm.text-orange-600.font-bold.block= propiedad.habitaciones
+                        div(class="my-5 text-sm md:w-2/3 flex flex-col md:items-center")
+                            p(class="text-white py-2 px-2 rounded-lg flex gap-1 items-center text-2xl") Precio <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                                    </svg>
+                            p.text-sm.text-orange-600.font-bold.block= propiedad.precio.precio
+
+                        div(class="my-5 text-sm md:md:w-2/3 flex flex-col md:items-center ")                     
+                            p(class="text-white py-2 px-2 rounded-lg flex gap-1 items-center text-2xl") Baños <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                                </svg> 
+                            p.text-sm.text-orange-600.font-bold.block= propiedad.wc
+                        
+                        div(class="my-5 text-sm md:w-2/3 flex flex-col md:items-center")
+                            p(class="text-white py-2 px-2 rounded-lg flex gap-1 items-center text-2xl") Estacionamiento <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                                </svg> 
+                            p.text-sm.text-orange-600.font-bold= propiedad.estacionamiento
+            aside(class="md:w-1/3 shadow-lg")
+                h2(class="text-center pb-10 pt-0 leading-6 text-2xl font-bold") Hubicacion de la Propiedad
+                div(class="h-96" id="mapa")
+                    p(id="lat" class="hidden")= propiedad.lat
+                    p(id="lng" class="hidden")= propiedad.lng
+                div(class="p-5")
+                    p(class="font-bold text-xs") Direccion
+                        span(id="calle" class="block text-lg")= propiedad.calle
+                    if !esVendedor 
+                        h3(class="font-bold text-2xl text-center my-10") Vendedor
+                        if enviado 
+                            p(class="text-center p-2 bg-green-100 text-green-600 uppercase font-bold") Mensaje enviado con exito
+                        else if usuario
+                            if errores
+                                div(class="max-w-md mx-auto my-10")
+                                    each error in errores
+                                        p.bg-red-500.text-white.uppercase.text-xs.text-center.p-2.mb-1.font-bold= error.msg
+                            form(method="POST") 
+                                input(type="hidden" name="_csrf" value= csrfToken) 
+                                div(class="space-y-5")
+                                    label(for="mensaje") Mensaje 
+                                    textarea(id="mensaje" name="mensaje" class="w-full px-2 py-2 border border-gray-400 rounded-lg shadow-lg placeholder-blue-600 text-blue-700" placeholder="Coloca tu mensaje aqui") 
+                                    input(type="submit", value="Enviar Mensaje" class="bg-indigo-600 text-white font-bold uppercase text-sm w-full p-2 cursor-pointer")
+                        else
+                            div(class="flex flex-col items-center justify-center gap-2")
+                                p.text-center Si deseas contactar al vendedor   
+                                    a(href="/auth/registro" class="text-orange-600") debes crear una cuenta
+
+block scripts
+    script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js")
+    script(src="/js/mostrarMapa.js")
+                        
